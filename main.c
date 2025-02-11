@@ -3,8 +3,8 @@
 #include <string.h>
 
 #define HISTORY_FILE "/home/tello/.zsh_history"
-#define MAX_COMANDOS 100
-#define MAX_COMANDOS_REPETICION 200
+#define MAX_COMANDOS 10
+#define MAX_COMANDOS_REPETICION 20
 #define MAX_LONGITUD 256  
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -94,6 +94,52 @@ void contador_comandos(char comandos[MAX_COMANDOS][MAX_LONGITUD], char repeticio
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void swap(int j, char repeticion_comandos[MAX_COMANDOS_REPETICION][MAX_LONGITUD])
+{
+	char temp[MAX_LONGITUD];
+
+	// Copiar los numeros
+	strcpy(temp,repeticion_comandos[j]);
+	strcpy(repeticion_comandos[j],repeticion_comandos[j+2]);
+	strcpy(repeticion_comandos[j+2],temp);
+
+	// Copiar los comandos
+	strcpy(temp,repeticion_comandos[j-1]);
+	strcpy(repeticion_comandos[j-1],repeticion_comandos[j+1]);
+	strcpy(repeticion_comandos[j+1],temp);
+
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void ordenar_repeticion_comandos(char repeticion_comandos[MAX_COMANDOS_REPETICION][MAX_LONGITUD], int *num_repetidos )
+{
+	int num1,num2;
+	int len = *num_repetidos;
+	
+	/* Se utiliza el algortimo de ordenacion de
+	 * burbuja, se podría mejorar pero es lo que
+	 * hay, los datos se guardan en repeticion_comandos
+	 * pero solo son validos hasta len, luego hay
+	 * espacios vacios con caracteres aleatorios
+	 */
+
+	for (int i=1; i<(len+1); i=i+2)
+	{
+		for (int j=1; j<(len-i); j=j+2)
+		{
+			num1 = atoi(repeticion_comandos[j]);
+			num2 = atoi(repeticion_comandos[j+2]);
+			//printf("NUM1 %d, NUM2 %d\n",num1,num2);
+			if (num1 > num2)
+			{
+				swap(j,repeticion_comandos);
+			}
+		}
+	}
+}
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 int main()
 {
@@ -114,17 +160,14 @@ int main()
 
 	contador_comandos(comandos,repeticion_comandos,&num_repetidos);
     	
-	/*for (int i = 0; i < num_comandos; i++) 
-	{
-        	printf("%d: %s\n", i + 1, comandos[i]);
-    	}
-	*/
+	ordenar_repeticion_comandos(repeticion_comandos,&num_repetidos);
+
 	for (int i = 0; i < num_repetidos; i++) 
 	{
         	printf("%s\n", repeticion_comandos[i]);
     	}
 
-
+	
 	return 0;
 }
 
