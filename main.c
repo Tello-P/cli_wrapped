@@ -3,8 +3,8 @@
 #include <string.h>
 
 #define HISTORY_FILE "/home/tello/.zsh_history"
-#define MAX_COMANDOS 10
-#define MAX_COMANDOS_REPETICION 20
+#define MAX_COMANDOS 1000
+#define MAX_COMANDOS_REPETICION 2000
 #define MAX_LONGITUD 256  
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -111,7 +111,7 @@ void swap(int j, char repeticion_comandos[MAX_COMANDOS_REPETICION][MAX_LONGITUD]
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void ordenar_repeticion_comandos(char repeticion_comandos[MAX_COMANDOS_REPETICION][MAX_LONGITUD], int *num_repetidos )
+void ordenar_repeticion_comandos(char repeticion_comandos[MAX_COMANDOS_REPETICION][MAX_LONGITUD], int *num_repetidos, char comandos_ordenados[*num_repetidos][MAX_LONGITUD] )
 {
 	int num1,num2;
 	int len = *num_repetidos;
@@ -136,6 +136,12 @@ void ordenar_repeticion_comandos(char repeticion_comandos[MAX_COMANDOS_REPETICIO
 			}
 		}
 	}
+
+	// Copiar a la cadena comandos_ordenados
+	for (int i=0; i<len; i++)
+	{
+		strcpy(comandos_ordenados[i],repeticion_comandos[i]);
+	}
 }
 
 
@@ -153,18 +159,19 @@ int main()
 
 	char comandos[MAX_COMANDOS][MAX_LONGITUD];
     	char repeticion_comandos[MAX_COMANDOS_REPETICION][MAX_LONGITUD];
-	int num_comandos = 0;
-	int num_repetidos = 0;
+	int num_comandos = 0;	//Num total de comandos en history, pueden estar repetidos
+	int num_repetidos = 0;	//Num total de comandos unicos en histoty, sin repeticiones
 
     	obtener_comandos(comandos, &num_comandos);
 
 	contador_comandos(comandos,repeticion_comandos,&num_repetidos);
     	
-	ordenar_repeticion_comandos(repeticion_comandos,&num_repetidos);
+	char comandos_ordenados[num_repetidos][MAX_LONGITUD];
+	ordenar_repeticion_comandos(repeticion_comandos,&num_repetidos,comandos_ordenados);
 
 	for (int i = 0; i < num_repetidos; i++) 
 	{
-        	printf("%s\n", repeticion_comandos[i]);
+        	printf("%s\n", comandos_ordenados[i]);
     	}
 
 	
