@@ -117,7 +117,7 @@ void swap(int j, char repeticion_comandos[MAX_COMANDOS_REPETICION][MAX_LONGITUD]
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void ordenar_repeticion_comandos(char repeticion_comandos[MAX_COMANDOS_REPETICION][MAX_LONGITUD], const int *num_repetidos, char comandos_ordenados[*num_repetidos][MAX_LONGITUD] )
+void ordenar_cadena(char repeticion_comandos[MAX_COMANDOS_REPETICION][MAX_LONGITUD], const int *num_repetidos, char comandos_ordenados[*num_repetidos][MAX_LONGITUD] )
 {
 	int num1,num2;
 	int len = *num_repetidos;
@@ -183,6 +183,7 @@ void obtener_comandos_principales_ordenados(const int *num_repetidos, char coman
     	}
 }
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void sumar_comandos_principales(const int *num_principales, int *num_suma_principales,char suma_comandos_principales[MAX_COMANDOS_REPETICION][MAX_LONGITUD], char comandos_principales[MAX_COMANDOS_REPETICION][MAX_LONGITUD])
 {
 	int contador = 0;
@@ -227,44 +228,6 @@ void sumar_comandos_principales(const int *num_principales, int *num_suma_princi
 	}
 }
 
-/*
-void sumar_comandos_principales(const int *num_principales, int *num_suma_principales, char suma_comandos_principales[MAX_COMANDOS_REPETICION][MAX_LONGITUD], char comandos_principales[MAX_COMANDOS_REPETICION][MAX_LONGITUD]) 
-{
-    int contador = 0;
-    int num1, num2, suma;
-    char N[20];
-
-    for (int i = 0; i < *num_principales; i = i + 2)
-    {
-        int encontrado = 0;
-
-        for (int j = 0; j < contador; j = j + 2)  // Solo recorrer los ya guardados
-        {
-            if (strcmp(comandos_principales[i], suma_comandos_principales[j]) == 0)
-            {
-                num1 = atoi(comandos_principales[i + 1]);
-                num2 = atoi(suma_comandos_principales[j + 1]);
-
-                suma = num1 + num2;
-                sprintf(N, "%d", suma);
-		
-		(*num_suma_principales)++;
-                strcpy(suma_comandos_principales[j + 1], N);
-                encontrado = 1;
-                break;
-            }
-        }
-
-        if (!encontrado && contador + 1 < MAX_COMANDOS_REPETICION)  // Evitar desbordamiento
-        {
-            strcpy(suma_comandos_principales[contador], comandos_principales[i]);
-            strcpy(suma_comandos_principales[contador + 1], comandos_principales[i + 1]);
-            contador += 2;
-        }
-    }
-}
-*/
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 int main()
@@ -294,7 +257,7 @@ int main()
     	
 	// Ordena repeticion_comandos, dejando el mayor en la ultima posicion
 	char comandos_ordenados[num_repetidos][MAX_LONGITUD];
-	ordenar_repeticion_comandos(repeticion_comandos,&num_repetidos,comandos_ordenados);
+	ordenar_cadena(repeticion_comandos,&num_repetidos,comandos_ordenados);
 
 	// Obtiene solo la primera palabra del comando, el comando principal sin argumentos
 	obtener_comandos_principales_ordenados(&num_repetidos,comandos_ordenados,comandos_principales,&num_principales);
@@ -303,9 +266,14 @@ int main()
 	char suma_comandos_principales[MAX_COMANDOS_REPETICION][MAX_LONGITUD];
 	sumar_comandos_principales(&num_principales,&num_suma_principales, suma_comandos_principales, comandos_principales);
 	
+	// Ordenar los valores de suma_comandos_principales
+	char suma_comandos_principales_ordenados[MAX_COMANDOS_REPETICION][MAX_LONGITUD];
+	ordenar_cadena(suma_comandos_principales,&num_suma_principales,suma_comandos_principales_ordenados);
+
+	/* PRUEBAS DE SALIDA */
 	for (int i = 0; i < num_suma_principales; i++) 
 	{
-        	printf("%s\n", suma_comandos_principales[i]);
+        	printf("%s\n", suma_comandos_principales_ordenados[i]);
     	}
 
 
