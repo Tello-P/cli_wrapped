@@ -10,6 +10,12 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void obtener_comandos(char comandos[MAX_COMANDOS][MAX_LONGITUD], int *num_comandos)
 {    	
+	/* Obtiene desde el fichero HISTORY_FILE
+	 * todos los comandos almacenados en 
+	 * formato string, en orden de uso, de mas
+	 * antiguo a mas reciente.
+	 */
+
 	FILE *f = fopen(HISTORY_FILE, "r");
     	if (f == NULL)
 	{
@@ -111,7 +117,7 @@ void swap(int j, char repeticion_comandos[MAX_COMANDOS_REPETICION][MAX_LONGITUD]
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void ordenar_repeticion_comandos(char repeticion_comandos[MAX_COMANDOS_REPETICION][MAX_LONGITUD], int *num_repetidos, char comandos_ordenados[*num_repetidos][MAX_LONGITUD] )
+void ordenar_repeticion_comandos(char repeticion_comandos[MAX_COMANDOS_REPETICION][MAX_LONGITUD], const int *num_repetidos, char comandos_ordenados[*num_repetidos][MAX_LONGITUD] )
 {
 	int num1,num2;
 	int len = *num_repetidos;
@@ -144,6 +150,38 @@ void ordenar_repeticion_comandos(char repeticion_comandos[MAX_COMANDOS_REPETICIO
 	}
 }
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void obtener_comandos_principales_ordenados(const int *num_repetidos, char comandos_ordenados[*num_repetidos][MAX_LONGITUD], char comandos_principales[MAX_COMANDOS_REPETICION][MAX_LONGITUD], int *num_principales) 
+{
+	/* Añadir una lista con la primera palabra de
+	 * repeticion_comandos o orden_repeticion_comandos,
+	 * que tenga solo la primera palabra por ejemplo:
+	 * [cat hola.txt,2, cat main.c,4] deberia ser [cat, 2, cat, 4]
+	 */
+
+    	int len = *num_repetidos;
+
+   	 for (int i = 0; i < len; i++) 
+	 {
+        	int j = 0;
+
+        	// Copiar caracteres hasta el primer espacio o fin de la cadena
+        	while (comandos_ordenados[i][j] != ' ' && comandos_ordenados[i][j] != '\0' && j < MAX_LONGITUD) 
+        	{
+        	    comandos_principales[*num_principales][j] = comandos_ordenados[i][j];
+        	    j++;
+        	}
+
+        	// Asegurar el final de la cadena
+        	comandos_principales[*num_principales][j] = '\0';
+
+        	// Incrementar el contador si hay una palabra válida
+        	if (j > 0)
+		{
+        	    (*num_principales)++;
+        	}
+    	}
+}
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -159,22 +197,35 @@ int main()
 
 	char comandos[MAX_COMANDOS][MAX_LONGITUD];
     	char repeticion_comandos[MAX_COMANDOS_REPETICION][MAX_LONGITUD];
-	int num_comandos = 0;	//Num total de comandos en history, pueden estar repetidos
-	int num_repetidos = 0;	//Num total de comandos unicos en histoty, sin repeticiones
+	char comandos_principales[MAX_COMANDOS_REPETICION][MAX_LONGITUD];
 
+	int num_comandos = 0;		//Num total de comandos en history, pueden estar repetidos
+	int num_repetidos = 0;		//Num total de comandos unicos en histoty, sin repeticiones
+	int num_principales = 0;	// Num total de comandos principales, solo la primera palabra
+	
+
+	// Meter los comandos en char comandos
     	obtener_comandos(comandos, &num_comandos);
 
+	// Cuenta el numero de veces que se repite cada comando y lo mete a repeticion_comandos
 	contador_comandos(comandos,repeticion_comandos,&num_repetidos);
     	
+	// Ordena repeticion_comandos, dejando el mayor en la ultima posicion
 	char comandos_ordenados[num_repetidos][MAX_LONGITUD];
 	ordenar_repeticion_comandos(repeticion_comandos,&num_repetidos,comandos_ordenados);
 
-	for (int i = 0; i < num_repetidos; i++) 
-	{
-        	printf("%s\n", comandos_ordenados[i]);
-    	}
+	// Obtiene solo la primera palabra del comando, el comando principal sin argumentos
+	obtener_comandos_principales_ordenados(&num_repetidos,comandos_ordenados,comandos_principales,&num_principales);
 
 	
+	for (int i = 0; i < num_principales; i++) 
+	{
+        	printf("%s\n", comandos_principales[i]);
+    	}
+
+        printf("%s\n", comandos_principales[0]);
+
+
 	return 0;
 }
 
