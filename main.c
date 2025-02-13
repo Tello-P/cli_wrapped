@@ -503,7 +503,7 @@ int main()
 
 	// Sumar todos los comandos que se han hecho en un dia
 	char comandos_date_suma[num_comandos_date*2][MAX_LONGITUD];
-	int num_comandos_date_suma = 0;
+	int num_comandos_date_suma = 0;		// Tamaño de comandos_date_suma
 	sumar_comandos_date(&num_comandos_date_suma, MAX_COMANDOS, &num_comandos_date, comandos_date, comandos_date_suma);
 
 
