@@ -3,12 +3,36 @@
 #include <string.h>
 
 #define HISTORY_FILE "/home/tello/.zsh_history"
-#define MAX_COMANDOS 1000
-#define MAX_COMANDOS_REPETICION 2000
+//#define MAX_COMANDOS 100
+#define MAX_COMANDOS_REPETICION 200
 #define MAX_LONGITUD 256  
 
+
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void obtener_comandos(char comandos[MAX_COMANDOS][MAX_LONGITUD], int *num_comandos)
+int longitud_historial()
+{
+	FILE *f = fopen(HISTORY_FILE, "r");
+    	if (f == NULL)
+	{
+        	perror("Archivo no encontrado");
+        	exit(1);
+	}
+
+	int MAX_COMANDOS = 0;
+	char buffer[MAX_LONGITUD];
+
+	while (fgets(buffer,sizeof(buffer),f))
+	{
+		MAX_COMANDOS++;
+	}
+	fclose(f);
+	return MAX_COMANDOS;
+}
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void obtener_comandos(const int MAX_COMANDOS, char comandos[MAX_COMANDOS][MAX_LONGITUD], int *num_comandos)
 {    	
 	/* Obtiene desde el fichero HISTORY_FILE
 	 * todos los comandos almacenados en 
@@ -41,7 +65,7 @@ void obtener_comandos(char comandos[MAX_COMANDOS][MAX_LONGITUD], int *num_comand
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void contador_comandos(char comandos[MAX_COMANDOS][MAX_LONGITUD], char repeticion_comandos[MAX_COMANDOS_REPETICION][MAX_LONGITUD], int *num_repetidos)
+void contador_comandos(const int MAX_COMANDOS, char comandos[MAX_COMANDOS][MAX_LONGITUD], char repeticion_comandos[MAX_COMANDOS_REPETICION][MAX_LONGITUD], int *num_repetidos)
 {
 
 	int coincidencia;
@@ -237,6 +261,10 @@ int main()
 	 * probablemente se puede quitar si no hace falta listar contador
 	 * num_repetidos --> numero de comandos que se han usado, sin repetirlos
 	 */
+	
+	int MAX_COMANDOS;
+
+	MAX_COMANDOS = longitud_historial();
 
 	char comandos[MAX_COMANDOS][MAX_LONGITUD];
     	char repeticion_comandos[MAX_COMANDOS_REPETICION][MAX_LONGITUD];
@@ -248,10 +276,10 @@ int main()
 	int num_suma_principales = 0;
 
 	// Meter los comandos en char comandos
-    	obtener_comandos(comandos, &num_comandos);
+    	obtener_comandos(MAX_COMANDOS, comandos, &num_comandos);
 
 	// Cuenta el numero de veces que se repite cada comando y lo mete a repeticion_comandos
-	contador_comandos(comandos,repeticion_comandos,&num_repetidos);
+	contador_comandos(MAX_COMANDOS, comandos,repeticion_comandos,&num_repetidos);
     	
 	// Ordena repeticion_comandos, dejando el mayor en la ultima posicion
 	char comandos_ordenados[num_repetidos][MAX_LONGITUD];
@@ -269,7 +297,6 @@ int main()
 	ordenar_cadena(suma_comandos_principales,&num_suma_principales,suma_comandos_principales_ordenados);
 
 	/* PRUEBAS DE SALIDA */
-	printf("sum %d",num_suma_principales);
 	for (int i = 0; i < num_suma_principales; i++) 
 	{
         	printf("%s\n", suma_comandos_principales_ordenados[i]);
