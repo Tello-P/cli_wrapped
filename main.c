@@ -196,10 +196,8 @@ void sumar_comandos_principales(const int *num_principales, int *num_suma_princi
 		encontrado = 0;
 		for (int j=0; j+1<*num_principales; j=j+2)
 		{
-			printf("S");
 			if (strcmp(comandos_principales[i],suma_comandos_principales[j]) == 0)
 			{
-				printf("PRIUEBA");
 				// Pasar los numeros a int
 				num1 = atoi(comandos_principales[i+1]);
 				num2 = atoi(suma_comandos_principales[j+1]);
@@ -216,12 +214,12 @@ void sumar_comandos_principales(const int *num_principales, int *num_suma_princi
 		if (!encontrado)
 		{
 			// Copiar el string
-			printf("CONTA %d",contador);
 			strcpy(suma_comandos_principales[contador],comandos_principales[i]);
 			contador++;
 			//Copiar el numero
 			strcpy(suma_comandos_principales[contador],comandos_principales[i+1]);
 			contador++;
+			(*num_suma_principales)++;
 			(*num_suma_principales)++;
 		}
 		
@@ -271,6 +269,7 @@ int main()
 	ordenar_cadena(suma_comandos_principales,&num_suma_principales,suma_comandos_principales_ordenados);
 
 	/* PRUEBAS DE SALIDA */
+	printf("sum %d",num_suma_principales);
 	for (int i = 0; i < num_suma_principales; i++) 
 	{
         	printf("%s\n", suma_comandos_principales_ordenados[i]);
