@@ -32,7 +32,7 @@ void titulo_inicio(const int num_comandos)
 void meses_barras(const int num_comandos, char *fechas_comandos[][10])
 {
 	
-	int en=0, fe=0, mz=0, ab=0, my=0, jn=0, jl=0, ag=0, sp=0, oc=0, no=0, di=0;
+	int enero=0, febrero=0, marzo=0, abril=0, mayo=0, junio=0, julio=0, agosto=0, septiembre=0, octubre=0, noviembre=0, diciembre=0;
 
 
 	for (int i = 0; i < num_comandos; i++)
@@ -43,24 +43,59 @@ void meses_barras(const int num_comandos, char *fechas_comandos[][10])
 
 		if (mes1 == '0')
 		{
-			if (mes2 == '1') en++;
-			else if (mes2 == '2') fe++;
-			else if (mes2 == '3') mz++;
-			else if (mes2 == '4') ab++;
-			else if (mes2 == '5') my++;
-			else if (mes2 == '6') jn++;
-			else if (mes2 == '7') jl++;
-			else if (mes2 == '8') ag++;
-			else if (mes2 == '9') sp++;
+			if (mes2 == '1') enero++;
+			else if (mes2 == '2') febrero++;
+			else if (mes2 == '3') marzo++;
+			else if (mes2 == '4') abril++;
+			else if (mes2 == '5') mayo++;
+			else if (mes2 == '6') junio++;
+			else if (mes2 == '7') julio++;
+			else if (mes2 == '8') agosto++;
+			else if (mes2 == '9') septiembre++;
 		}
 		else if (mes1 == '1')
 		{
-			if (mes2 == '0') oc++;
-			else if (mes2 == '1') no++;
-			else if (mes2 == '2') di++;
+			if (mes2 == '0') octubre++;
+			else if (mes2 == '1') noviembre++;
+			else if (mes2 == '2') diciembre++;
 		}
 	}
 
+	int max_hashes = 40;
+	int max_value = enero;
+    	if (febrero > max_value) max_value = febrero;
+    	if (marzo > max_value) max_value = marzo;
+    	if (abril > max_value) max_value = abril;
+    	if (mayo > max_value) max_value = mayo;
+    	if (junio > max_value) max_value = junio;
+    	if (julio > max_value) max_value = julio;
+    	if (agosto > max_value) max_value = agosto;
+    	if (septiembre > max_value) max_value = septiembre;
+    	if (octubre > max_value) max_value = octubre;
+    	if (noviembre > max_value) max_value = noviembre;
+    	if (diciembre > max_value) max_value = diciembre;
+
+	#define PRINT_MES(nombre, valor) \
+        printf("\n" nombre " "); \
+        for (int i = 0; i < (valor * max_hashes) / max_value; i++) { \
+	    printf("#"); \
+        }\
+	printf(" [%d]",valor);
+
+    	// Imprimir los meses con los '#' escalados
+    	PRINT_MES("Enero", enero);
+    	PRINT_MES("Febrero", febrero);
+    	PRINT_MES("Marzo", marzo);
+    	PRINT_MES("Abril", abril);
+    	PRINT_MES("Mayo", mayo);
+    	PRINT_MES("Junio", junio);
+    	PRINT_MES("Julio", julio);
+    	PRINT_MES("Agosto", agosto);
+    	PRINT_MES("Septiembre", septiembre);
+    	PRINT_MES("Octubre", octubre);
+    	PRINT_MES("Noviembre", noviembre);
+    	PRINT_MES("Diciembre", diciembre);
+	printf("\n");
 }	
 
 
@@ -76,7 +111,7 @@ int main()
 {
 
 	int num_comandos = 2;
-	char *fechas_comandos[][10] = {{"2025-11-4", "3"},{"2025-11-18", "8"},};
+	char *fechas_comandos[][10] = {{"2025-01-4", "3"},{"2025-11-18", "8"},};
 
 	graficos(num_comandos, fechas_comandos);
 	
