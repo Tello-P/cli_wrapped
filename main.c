@@ -190,7 +190,6 @@ void ordenar_cadena(const int MAX_COMANDOS_REPETICION, char repeticion_comandos[
 		{
 			num1 = atoi(repeticion_comandos[j]);
 			num2 = atoi(repeticion_comandos[j+2]);
-			//printf("NUM1 %d, NUM2 %d\n",num1,num2);
 			if (num1 > num2)
 			{
 				swap(MAX_COMANDOS_REPETICION,j,repeticion_comandos);
@@ -538,11 +537,11 @@ void dias_mas_comandos(const int num_comandos, const int MAX_COMANDOS, char fech
 	*/
 	
 	printf("Dias con mas comandos\n");
-	printf("Numero 1: %s\n", fechas_comandos[num_comandos-1]);
-	printf("Numero 2: %s\n", fechas_comandos[num_comandos-2]);
-	printf("Numero 3: %s\n", fechas_comandos[num_comandos-3]);
-	printf("Numero 4: %s\n", fechas_comandos[num_comandos-4]);
-	printf("Numero 5: %s\n", fechas_comandos[num_comandos-5]);
+	printf("Numero 1: %s\n", fechas_comandos[num_comandos-2]);
+	printf("Numero 2: %s\n", fechas_comandos[num_comandos-4]);
+	printf("Numero 3: %s\n", fechas_comandos[num_comandos-6]);
+	printf("Numero 4: %s\n", fechas_comandos[num_comandos-8]);
+	printf("Numero 5: %s\n", fechas_comandos[num_comandos-10]);
 
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -617,21 +616,21 @@ int main()
 	char comandos_date_suma[num_comandos_date*2][MAX_LONGITUD];
 	int num_comandos_date_suma = 0;		// Tamaño de comandos_date_suma
 	sumar_comandos_date(&num_comandos_date_suma, MAX_COMANDOS, &num_comandos_date, comandos_date, comandos_date_suma);
-
+	
 	/*
 	 * Graficos
 	 */
 
 	titulo_inicio(num_comandos);
 	meses_barras(num_comandos_date, MAX_COMANDOS, comandos_date);
-	dias_mas_comandos(num_comandos_date, MAX_COMANDOS, comandos_date);
+	dias_mas_comandos(num_comandos_date_suma, num_comandos_date*2, comandos_date_suma);
 
 	/* PRUEBAS DE SALIDA */
 
-	/*for (int i = 0; i < num_comandos_date; i++) 
+	for (int i = 0; i < num_comandos_date_suma; i++) 
 	{
-        	printf("%s\n", comandos_date[i]);
-    	}*/
+        	printf("%s\n", comandos_date_suma[i]);
+    	}
 
 
 
