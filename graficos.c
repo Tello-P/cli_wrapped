@@ -114,6 +114,7 @@ void dias_mas_comandos(const int num_comandos, char *fechas_comandos[MAX][11])
 
 }
 
+//void comandos_mas_usados(char *suma_comandos_principales_ordenados[MAX][11]);
 
 void graficos(const int num_comandos, char *fechas_comandos[MAX][11])
 
@@ -121,16 +122,20 @@ void graficos(const int num_comandos, char *fechas_comandos[MAX][11])
 	titulo_inicio(num_comandos);	
 	meses_barras(num_comandos, fechas_comandos);
 	dias_mas_comandos(num_comandos,fechas_comandos);
+	//comandos_mas_usados(suma_comandos_principales_ordenados);
 }
 
+/*
 int main()
 {
 
 	int num_comandos = 6;
 	char *fechas_comandos[MAX][11] = {{"2025-01-04", "3"},{"2025-11-18", "8"},{"2025-03-05","17"},{"2025-01-04", "3"},{"2025-11-18", "8"},{"2025-03-05","17"},};
+	//char *suma_comandos_principales_ordenados[MAX][11] = {
 
 	graficos(num_comandos, fechas_comandos);
 	
 
 	return 0;
-}
+}*/
+

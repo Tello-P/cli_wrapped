@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 #define HISTORY_FILE "/home/tello/.zsh_history"
 #define HISTORY_FILE_DATE "/home/tello/.zsh_history_date"
 #define MAX_LONGITUD 500 
@@ -372,6 +373,7 @@ void sumar_comandos_principales(const int MAX_COMANDOS_REPETICION, const int *nu
 	}
 }
 */
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void sumar_comandos_date(int *num_comandos_date_suma, const int MAX_COMANDOS, const int *num_comandos_date, char comandos_date[MAX_COMANDOS][MAX_LONGITUD], char comandos_date_suma[(*num_comandos_date) * 2][MAX_LONGITUD]) {
     int len = *num_comandos_date;
     int contador_fecha = 0;
@@ -431,8 +433,118 @@ void sumar_comandos_date(int *num_comandos_date_suma, const int MAX_COMANDOS, co
     }
     *num_comandos_date_suma = contador;
 }
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void titulo_inicio(const int num_comandos)
+{
+	system("clear");
+	
+	if (num_comandos == 0)
+	{
+		perror("No hay comandos usados todavia");
+		exit(1);
+	}
+
+	printf("%d",num_comandos);
+	printf("   ____ _     ___  __        ______      _    ____  ____  _____ ____  %d\n",num_comandos);
+	printf("%d",num_comandos);
+	printf("  / ___| |   |_ _| \\ \\      / /  _ \\    / \\  |  _ \\|  _ \\| ____|  _ \\ %d\n",num_comandos);
+	printf("%d",num_comandos);
+        printf(" | |   | |    | |   \\ \\ /\\ / /| |_) |  / _ \\ | |_) | |_) |  _| | | | |%d\n",num_comandos);
+	printf("%d",num_comandos);
+        printf(" | |___| |___ | |    \\ V  V / |  _ <  / ___ \\|  __/|  __/| |___| |_| |%d\n",num_comandos);
+	printf("%d",num_comandos);
+        printf("  \\____|_____|___|    \\_/\\_/  |_| \\_\\/_/   \\_\\_|   |_|   |_____|____/ %d\n", num_comandos);
+	printf("%d\n",num_comandos);
+
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void meses_barras(const int num_comandos,const int MAX_COMANDOS, char fechas_comandos[MAX_COMANDOS][MAX_LONGITUD])
+{
+	
+	int enero=0, febrero=0, marzo=0, abril=0, mayo=0, junio=0, julio=0, agosto=0, septiembre=0, octubre=0, noviembre=0, diciembre=0;
+	int enero2=0, febrero2=0, marzo2=0, abril2=0, mayo2=0, junio2=0, julio2=0, agosto2=0, septiembre2=0, octubre2=0, noviembre2=0, diciembre2=0;
 
 
+	for (int i = 0; i < num_comandos; i++)
+	{
+
+		char mes1 = fechas_comandos[i][5];  
+		char mes2 = fechas_comandos[i][6];  
+
+		if (mes1 == '0')
+		{
+			if (mes2 == '1') enero++;
+			else if (mes2 == '2'){febrero++;febrero2++;}
+			else if (mes2 == '3'){marzo++;marzo2++;}
+			else if (mes2 == '4'){abril++;abril2++;}
+			else if (mes2 == '5') mayo++;
+			else if (mes2 == '6') junio++;
+			else if (mes2 == '7') julio++;
+			else if (mes2 == '8') agosto++;
+			else if (mes2 == '9') septiembre++;
+		}
+		else if (mes1 == '1')
+		{
+			if (mes2 == '0') octubre++;
+			else if (mes2 == '1') noviembre++;
+			else if (mes2 == '2') diciembre++;
+		}
+	}
+
+	int max_hashes = 40;
+	int max_value = enero;
+    	if (febrero > max_value) max_value = febrero;
+    	if (marzo > max_value) max_value = marzo;
+    	if (abril > max_value) max_value = abril;
+    	if (mayo > max_value) max_value = mayo;
+    	if (junio > max_value) max_value = junio;
+    	if (julio > max_value) max_value = julio;
+    	if (agosto > max_value) max_value = agosto;
+    	if (septiembre > max_value) max_value = septiembre;
+    	if (octubre > max_value) max_value = octubre;
+    	if (noviembre > max_value) max_value = noviembre;
+    	if (diciembre > max_value) max_value = diciembre;
+
+	#define PRINT_MES(nombre, valor, valor2) \
+        printf("\n" nombre " "); \
+        for (int i = 0; i < (valor * max_hashes) / max_value; i++) { \
+	   printf("#"); \
+        }\
+	printf(" [%d]",valor2);
+
+    	// Imprimir los meses con los '#' escalados
+    	PRINT_MES("Enero", enero, enero2);
+    	PRINT_MES("Febrero", febrero, febrero2);
+    	PRINT_MES("Marzo", marzo, marzo2);
+    	PRINT_MES("Abril", abril, abril2);
+    	PRINT_MES("Mayo", mayo, mayo2);
+    	PRINT_MES("Junio", junio, junio2);
+    	PRINT_MES("Julio", julio, julio2);
+    	PRINT_MES("Agosto", agosto, agosto2);
+    	PRINT_MES("Septiembre", septiembre, septiembre2);
+    	PRINT_MES("Octubre", octubre, octubre2);
+    	PRINT_MES("Noviembre", noviembre, noviembre2);
+    	PRINT_MES("Diciembre", diciembre, diciembre2);
+	printf("\n");
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void dias_mas_comandos(const int num_comandos, const int MAX_COMANDOS, char fechas_comandos[MAX_COMANDOS][MAX_LONGITUD])
+{
+	/* coger el ultimo valor
+	* que es el mas alto y 
+	* listo
+	*/
+	
+	printf("Dias con mas comandos\n");
+	printf("Numero 1: %s\n", fechas_comandos[num_comandos-1]);
+	printf("Numero 2: %s\n", fechas_comandos[num_comandos-2]);
+	printf("Numero 3: %s\n", fechas_comandos[num_comandos-3]);
+	printf("Numero 4: %s\n", fechas_comandos[num_comandos-4]);
+	printf("Numero 5: %s\n", fechas_comandos[num_comandos-5]);
+
+}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 int main()
@@ -506,14 +618,20 @@ int main()
 	int num_comandos_date_suma = 0;		// Tamaño de comandos_date_suma
 	sumar_comandos_date(&num_comandos_date_suma, MAX_COMANDOS, &num_comandos_date, comandos_date, comandos_date_suma);
 
+	/*
+	 * Graficos
+	 */
 
-
+	titulo_inicio(num_comandos);
+	meses_barras(num_comandos_date, MAX_COMANDOS, comandos_date);
+	dias_mas_comandos(num_comandos_date, MAX_COMANDOS, comandos_date);
 
 	/* PRUEBAS DE SALIDA */
-	for (int i = 0; i < num_comandos_date_suma; i++) 
+
+	/*for (int i = 0; i < num_comandos_date; i++) 
 	{
-        	printf("%s\n", comandos_date_suma[i]);
-    	}
+        	printf("%s\n", comandos_date[i]);
+    	}*/
 
 
 
