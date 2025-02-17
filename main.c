@@ -4,7 +4,7 @@
 
 #define HISTORY_FILE "/home/tello/.zsh_history"
 #define HISTORY_FILE_DATE "/home/tello/.zsh_history_date"
-#define MAX_LONGITUD 1024 
+#define MAX_LONGITUD 500 
 
 
 
