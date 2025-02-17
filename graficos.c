@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-
+#define MAX 20
 
 void titulo_inicio(const int num_comandos)
 {
@@ -29,7 +29,7 @@ void titulo_inicio(const int num_comandos)
 }
 
 
-void meses_barras(const int num_comandos, char *fechas_comandos[][10])
+void meses_barras(const int num_comandos, char *fechas_comandos[MAX][11])
 {
 	
 	int enero=0, febrero=0, marzo=0, abril=0, mayo=0, junio=0, julio=0, agosto=0, septiembre=0, octubre=0, noviembre=0, diciembre=0;
@@ -98,20 +98,36 @@ void meses_barras(const int num_comandos, char *fechas_comandos[][10])
 	printf("\n");
 }	
 
+void dias_mas_comandos(const int num_comandos, char *fechas_comandos[MAX][11])
+{
+	/* coger el ultimo valor
+	 * que es el mas alto y 
+	 * listo
+	 */
+	
+	printf("Dias con mas comandos\n");
+	printf("Numero 1: %s\n", *fechas_comandos[num_comandos-1]);
+	printf("Numero 2: %s\n", *fechas_comandos[num_comandos-2]);
+	printf("Numero 3: %s\n", *fechas_comandos[num_comandos-3]);
+	printf("Numero 4: %s\n", *fechas_comandos[num_comandos-4]);
+	printf("Numero 5: %s\n", *fechas_comandos[num_comandos-5]);
+
+}
 
 
-void graficos(const int num_comandos, char *fechas_comandos[][10])
+void graficos(const int num_comandos, char *fechas_comandos[MAX][11])
 
 {
 	titulo_inicio(num_comandos);	
 	meses_barras(num_comandos, fechas_comandos);
+	dias_mas_comandos(num_comandos,fechas_comandos);
 }
 
 int main()
 {
 
-	int num_comandos = 2;
-	char *fechas_comandos[][10] = {{"2025-01-4", "3"},{"2025-11-18", "8"},};
+	int num_comandos = 6;
+	char *fechas_comandos[MAX][11] = {{"2025-01-04", "3"},{"2025-11-18", "8"},{"2025-03-05","17"},{"2025-01-04", "3"},{"2025-11-18", "8"},{"2025-03-05","17"},};
 
 	graficos(num_comandos, fechas_comandos);
 	
