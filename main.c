@@ -183,11 +183,10 @@ void ordenar_cadena(const int MAX_COMANDOS_REPETICION, char repeticion_comandos[
 	 * pero solo son validos hasta len, luego hay
 	 * espacios vacios con caracteres aleatorios
 	 */
-
 	for (int i=1; i<(len+1); i=i+2)
 	{
 		for (int j=1; j<(len-i); j=j+2)
-		{
+		{	
 			num1 = atoi(repeticion_comandos[j]);
 			num2 = atoi(repeticion_comandos[j+2]);
 			if (num1 > num2)
@@ -280,98 +279,7 @@ void sumar_comandos_principales(const int MAX_COMANDOS_REPETICION, const int *nu
 	}
 }
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/*void sumar_comandos_date(const int MAX_COMANDOS, const int *num_comandos_date, char comandos_date[MAX_COMANDOS][MAX_LONGITUD], char comandos_date_suma[(*num_comandos_date) * 2][MAX_LONGITUD])
-{
-	* Poner solo las fechas
-	 * sumar cuantas veces se
-	 * repite el mismo dia y 
-	 * meter en lista la fecha
-	 * y el numero de veces que
-	 * sale
-	 *
 
-	int num = *num_comandos_date;
-	int len = *num_comandos_date;
-	char comandos_solo_date[MAX_COMANDOS][MAX_LONGITUD];
-
-   	for (int i = 0; i < len; i++) 
-	{
-        	int j = 0;
-
-        	// Copiar caracteres hasta el primer espacio o fin de la cadena
-        	while (comandos_date[i][j] != ' ' && comandos_date[i][j] != '\0' && j < MAX_LONGITUD) 
-        	{
-        	    comandos_solo_date[num][j] = comandos_date[i][j];
-        	    j++;
-        	}
-
-        	// Asegurar el final de la cadena
-        	comandos_solo_date[num][j] = '\0';
-
-        	// Incrementar el contador si hay una palabra válida
-        	if (j > 0)
-		{
-        	    num++;
-        	}
-
-		printf("CONTROL");
-	}
-
-	// Ya tenemos la lista con solo las fechas, solo queda sumarlas
-	int contador = 0;
-	int num1,num2,suma;
-	char N[20];
-	for (int i = 0; i < len; i++) 
-	{	
-		int coincidencia = 0;
-		
-        	if (strcmp(comandos_solo_date[i],comandos_date_suma[i+1]) == 1) 
-        	{
-			// Mirar la lista final
-			for (int t=0; t+1 < len; t=t+2)
-			{
-				// Si no esta en la lista meterlo con un uno
-				if ( strcmp(comandos_solo_date[i],comandos_date_suma[t]) == 0)
-				{
-					
-					// Pasar los numeros a int
-					num1 = 1;
-					num2 = atoi(comandos_date_suma[t+1]);
-					
-					// Sumarlos
-					suma = num1 + num2;
-					
-					// Convertir a string de nuevo
-					sprintf(N, "%d",suma);
-					
-					// Devolver a la posicion
-					strcpy(comandos_date_suma[t+1],N);
-				
-					coincidencia = 1;
-					break;
-			
-				}
-				//Si esta en la lista sumar uno a su numero asignado
-				else
-				{
-					coincidencia = 0;
-				}
-			}
-			if (coincidencia == 0)
-			{
-				printf("CXO");
-				strcpy(comandos_date_suma[contador],comandos_solo_date[i]); 
-				contador++;
-				strcpy(comandos_date_suma[contador],"1");
-				contador++;
-			}
-			//break;        	    	
-        	}
-	
-	}
-}
-*/
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void sumar_comandos_date(int *num_comandos_date_suma, const int MAX_COMANDOS, const int *num_comandos_date, char comandos_date[MAX_COMANDOS][MAX_LONGITUD], char comandos_date_suma[(*num_comandos_date) * 2][MAX_LONGITUD]) {
     int len = *num_comandos_date;
@@ -435,7 +343,6 @@ void sumar_comandos_date(int *num_comandos_date_suma, const int MAX_COMANDOS, co
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void titulo_inicio(const int num_comandos)
 {
-	system("clear");
 	
 	if (num_comandos == 0)
 	{
@@ -536,7 +443,7 @@ void dias_mas_comandos(const int num_comandos, const int MAX_COMANDOS, char fech
 	* listo
 	*/
 	
-	printf("Dias con mas comandos\n");
+	printf("\nDias con mas comandos\n");
 	printf("Numero 1: %s\n", fechas_comandos[num_comandos-2]);
 	printf("Numero 2: %s\n", fechas_comandos[num_comandos-4]);
 	printf("Numero 3: %s\n", fechas_comandos[num_comandos-6]);
@@ -586,7 +493,7 @@ int main()
 
 	// Ordena repeticion_comandos, dejando el mayor en la ultima posicion
 	char comandos_ordenados[num_repetidos][MAX_LONGITUD];
-	ordenar_cadena(MAX_COMANDOS_REPETICION, repeticion_comandos, &num_repetidos, comandos_ordenados);
+	//ordenar_cadena(MAX_COMANDOS_REPETICION, repeticion_comandos, &num_repetidos, comandos_ordenados);
 
 
 	// Obtiene solo la primera palabra del comando, el comando principal sin argumentos
@@ -600,7 +507,7 @@ int main()
 
 	// Ordenar los valores de suma_comandos_principales
 	char suma_comandos_principales_ordenados[MAX_COMANDOS_REPETICION][MAX_LONGITUD];
-	ordenar_cadena(MAX_COMANDOS_REPETICION, suma_comandos_principales, &num_suma_principales, suma_comandos_principales_ordenados);
+	//ordenar_cadena(MAX_COMANDOS_REPETICION, suma_comandos_principales, &num_suma_principales, suma_comandos_principales_ordenados);
 
 	/* 
 	 * Repetimos todo para el hist_file_date 
@@ -616,7 +523,12 @@ int main()
 	char comandos_date_suma[num_comandos_date*2][MAX_LONGITUD];
 	int num_comandos_date_suma = 0;		// Tamaño de comandos_date_suma
 	sumar_comandos_date(&num_comandos_date_suma, MAX_COMANDOS, &num_comandos_date, comandos_date, comandos_date_suma);
-	
+
+	// Ordenar comandos_date_suma
+	int len = num_comandos_date_suma;
+	char comandos_date_suma_ordenados[num_comandos_date_suma][MAX_LONGITUD];
+	ordenar_cadena(len, comandos_date_suma, &len, comandos_date_suma_ordenados);
+
 	/*
 	 * Graficos
 	 */
@@ -627,12 +539,12 @@ int main()
 
 	/* PRUEBAS DE SALIDA */
 
-	for (int i = 0; i < num_comandos_date_suma; i++) 
+/*	for (int i = 0; i < num_comandos_date_suma; i++) 
 	{
-        	printf("%s\n", comandos_date_suma[i]);
+        	printf("%s\n", comandos_date_suma_ordenados[i]);
     	}
 
-
+*/
 
 	return 0;
 }
