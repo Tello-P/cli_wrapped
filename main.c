@@ -462,7 +462,7 @@ void comandos_mas_usados(const int num_suma_principales, const int MAX_COMANDOS_
 
 	getchar();
 	
-	printf("Comando Numero 1: ");
+	printf("\nComando Numero 1: ");
 	for (int i=0; i<3; i++)
 	{
 		printf(".");
@@ -471,9 +471,10 @@ void comandos_mas_usados(const int num_suma_principales, const int MAX_COMANDOS_
 	}
 	printf("\n");
 	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-2]);
+	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-1]);
 	
 	sleep(1);
-	printf("Comando Numero 2: ");
+	printf("\nComando Numero 2: ");
 	for (int i=0; i<3; i++)
 	{
 		printf(".");
@@ -482,9 +483,10 @@ void comandos_mas_usados(const int num_suma_principales, const int MAX_COMANDOS_
 	}
 	printf("\n");
 	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-4]);
+	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-3]);
 
 	sleep(1);
-	printf("Comando Numero 3: ");
+	printf("\nComando Numero 3: ");
 	for (int i=0; i<3; i++)
 	{
 		printf(".");
@@ -493,9 +495,10 @@ void comandos_mas_usados(const int num_suma_principales, const int MAX_COMANDOS_
 	}
 	printf("\n");
 	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-6]);
+	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-5]);
 	
 	sleep(1);
-	printf("Comando Numero 4: ");
+	printf("\nComando Numero 4: ");
 	for (int i=0; i<3; i++)
 	{
 		printf(".");
@@ -504,9 +507,10 @@ void comandos_mas_usados(const int num_suma_principales, const int MAX_COMANDOS_
 	}
 	printf("\n");
 	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-8]);
+	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-7]);
 
 	sleep(1);
-	printf("Comando Numero 5: ");
+	printf("\nComando Numero 5: ");
 	for (int i=0; i<3; i++)
 	{
 		printf(".");
@@ -515,6 +519,7 @@ void comandos_mas_usados(const int num_suma_principales, const int MAX_COMANDOS_
 	}
 	printf("\n");
 	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-10]);
+	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-9]);
 	
 }
 
@@ -611,7 +616,6 @@ int main()
 	{
         	printf("%s\n", suma_comandos_principales_ordenados[i]);
     	}
-
 */
 
 	return 0;
