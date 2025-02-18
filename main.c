@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 
 #define HISTORY_FILE "/home/tello/.zsh_history"
@@ -451,6 +452,72 @@ void dias_mas_comandos(const int num_comandos, const int MAX_COMANDOS, char fech
 	printf("Numero 5: %s\n", fechas_comandos[num_comandos-10]);
 
 }
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void comandos_mas_usados(const int num_suma_principales, const int MAX_COMANDOS_REPETICION, char suma_comandos_principales_ordenados[MAX_COMANDOS_REPETICION][MAX_LONGITUD])
+{
+	printf("COMANDOS MAS USADOS\n");
+	printf("Enter para descubrir...\n");
+
+	getchar();
+	
+	printf("Comando Numero 1: ");
+	for (int i=0; i<3; i++)
+	{
+		printf(".");
+		fflush(stdout);
+		sleep(1);
+	}
+	printf("\n");
+	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-2]);
+	
+	sleep(1);
+	printf("Comando Numero 2: ");
+	for (int i=0; i<3; i++)
+	{
+		printf(".");
+		fflush(stdout);
+		sleep(1);
+	}
+	printf("\n");
+	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-4]);
+
+	sleep(1);
+	printf("Comando Numero 3: ");
+	for (int i=0; i<3; i++)
+	{
+		printf(".");
+		fflush(stdout);
+		sleep(1);
+	}
+	printf("\n");
+	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-6]);
+	
+	sleep(1);
+	printf("Comando Numero 4: ");
+	for (int i=0; i<3; i++)
+	{
+		printf(".");
+		fflush(stdout);
+		sleep(1);
+	}
+	printf("\n");
+	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-8]);
+
+	sleep(1);
+	printf("Comando Numero 5: ");
+	for (int i=0; i<3; i++)
+	{
+		printf(".");
+		fflush(stdout);
+		sleep(1);
+	}
+	printf("\n");
+	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-10]);
+	
+}
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 int main()
@@ -493,7 +560,7 @@ int main()
 
 	// Ordena repeticion_comandos, dejando el mayor en la ultima posicion
 	char comandos_ordenados[num_repetidos][MAX_LONGITUD];
-	//ordenar_cadena(MAX_COMANDOS_REPETICION, repeticion_comandos, &num_repetidos, comandos_ordenados);
+	ordenar_cadena(MAX_COMANDOS_REPETICION, repeticion_comandos, &num_repetidos, comandos_ordenados);
 
 
 	// Obtiene solo la primera palabra del comando, el comando principal sin argumentos
@@ -507,7 +574,7 @@ int main()
 
 	// Ordenar los valores de suma_comandos_principales
 	char suma_comandos_principales_ordenados[MAX_COMANDOS_REPETICION][MAX_LONGITUD];
-	//ordenar_cadena(MAX_COMANDOS_REPETICION, suma_comandos_principales, &num_suma_principales, suma_comandos_principales_ordenados);
+	ordenar_cadena(MAX_COMANDOS_REPETICION, suma_comandos_principales, &num_suma_principales, suma_comandos_principales_ordenados);
 
 	/* 
 	 * Repetimos todo para el hist_file_date 
@@ -536,12 +603,13 @@ int main()
 	titulo_inicio(num_comandos);
 	meses_barras(num_comandos_date, MAX_COMANDOS, comandos_date);
 	dias_mas_comandos(num_comandos_date_suma, num_comandos_date*2, comandos_date_suma);
+	comandos_mas_usados(num_suma_principales, MAX_COMANDOS_REPETICION, suma_comandos_principales_ordenados);
 
 	/* PRUEBAS DE SALIDA */
 
-/*	for (int i = 0; i < num_comandos_date_suma; i++) 
+/*	for (int i = 0; i < num_suma_principales; i++) 
 	{
-        	printf("%s\n", comandos_date_suma_ordenados[i]);
+        	printf("%s\n", suma_comandos_principales_ordenados[i]);
     	}
 
 */
