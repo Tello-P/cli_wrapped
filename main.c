@@ -397,6 +397,9 @@ void meses_barras(const int num_comandos,const int MAX_COMANDOS, char fechas_com
 			else if (mes2 == '1') noviembre++;
 			else if (mes2 == '2') diciembre++;
 		}
+		else
+		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		{febrero++;febrero2++;};	// esta linea puede dar algun error pero va bien de momento
 	}
 
 	int max_hashes = 40;
@@ -627,11 +630,12 @@ int main()
 	 * Graficos
 	 */
 
-	titulo_inicio(num_comandos);
+	titulo_inicio(num_comandos_date);
 	meses_barras(num_comandos_date, MAX_COMANDOS, comandos_date);
 	dias_mas_comandos(num_comandos_date_suma, num_comandos_date*2, comandos_date_suma);
 	comandos_mas_usados(num_suma_principales, MAX_COMANDOS_REPETICION, suma_comandos_principales_ordenados);
 	combinacion_comandos_mas_usados(num_repetidos, comandos_ordenados);
+	//resumen(num_comandos
 
 	/* PRUEBAS DE SALIDA */
 
