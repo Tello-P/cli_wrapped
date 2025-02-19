@@ -3,7 +3,6 @@
 #include <string.h>
 #include <unistd.h>
 
-
 #define HISTORY_FILE "/home/tello/.zsh_history"
 #define HISTORY_FILE_DATE "/home/tello/.zsh_history_date"
 #define MAX_LONGITUD 500 
@@ -344,7 +343,9 @@ void sumar_comandos_date(int *num_comandos_date_suma, const int MAX_COMANDOS, co
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void titulo_inicio(const int num_comandos)
 {
+	//system("clear");
 	
+        printf("\033[H\033[J"); // Limpia la pantalla en terminal
 	if (num_comandos == 0)
 	{
 		perror("No hay comandos usados todavia");
@@ -369,6 +370,8 @@ void titulo_inicio(const int num_comandos)
 void meses_barras(const int num_comandos,const int MAX_COMANDOS, char fechas_comandos[MAX_COMANDOS][MAX_LONGITUD])
 {
 	
+	//system("clear");
+        printf("\033[H\033[J"); // Limpia la pantalla en terminal
 	int enero=0, febrero=0, marzo=0, abril=0, mayo=0, junio=0, julio=0, agosto=0, septiembre=0, octubre=0, noviembre=0, diciembre=0;
 	int enero2=0, febrero2=0, marzo2=0, abril2=0, mayo2=0, junio2=0, julio2=0, agosto2=0, septiembre2=0, octubre2=0, noviembre2=0, diciembre2=0;
 
@@ -460,6 +463,8 @@ void dias_mas_comandos(const int num_comandos, const int MAX_COMANDOS, char fech
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void comandos_mas_usados(const int num_suma_principales, const int MAX_COMANDOS_REPETICION, char suma_comandos_principales_ordenados[MAX_COMANDOS_REPETICION][MAX_LONGITUD])
 {
+	//system("clear");
+        printf("\033[H\033[J"); // Limpia la pantalla en terminal
 	printf("COMANDOS MAS USADOS\n");
 	printf("Enter para descubrir...\n");
 
@@ -506,6 +511,8 @@ void comandos_mas_usados(const int num_suma_principales, const int MAX_COMANDOS_
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void combinacion_comandos_mas_usados(const int num_repetidos, char comandos_ordenados[num_repetidos][MAX_LONGITUD])
 {
+	//system("clear");
+        printf("\033[H\033[J"); // Limpia la pantalla en terminal
 	printf("COMBINACION DE COMANDOS MAS USADOS\n");
 	printf("Enter para descubrir...\n");
 
@@ -553,7 +560,8 @@ void combinacion_comandos_mas_usados(const int num_repetidos, char comandos_orde
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void resumen(const int num_comandos_date, const int num_suma_principales, const int MAX_COMANDOS_REPETICION, char suma_comandos_principales_ordenados[MAX_COMANDOS_REPETICION][MAX_LONGITUD], const int num_repetidos, char comandos_ordenados[num_repetidos][MAX_LONGITUD])
 {
-	system("clear");
+	//system("clear");
+        printf("\033[H\033[J"); // Limpia la pantalla en terminal
 	printf("\nNUMERO TOTAL DE COMANDOS USADOS\n %d\n",num_comandos_date);
 	
 	
@@ -676,12 +684,41 @@ int main()
 	 * Graficos
 	 */
 
+	/*
 	titulo_inicio(num_comandos_date);
 	meses_barras(num_comandos_date, MAX_COMANDOS, comandos_date);
 	dias_mas_comandos(num_comandos_date_suma, num_comandos_date*2, comandos_date_suma);
 	comandos_mas_usados(num_suma_principales, MAX_COMANDOS_REPETICION, suma_comandos_principales_ordenados);
 	combinacion_comandos_mas_usados(num_repetidos, comandos_ordenados);
 	resumen(num_comandos_date, num_suma_principales, MAX_COMANDOS_REPETICION, suma_comandos_principales_ordenados, num_repetidos, comandos_ordenados);
+	*/
+
+    	int indice = 0;
+    	int key;
+	while (1)
+	{
+        	//printf("\033[H\033[J"); // Limpia la pantalla en terminal
+	
+        	// Llamar a la función según el índice
+        	if (indice == 0) titulo_inicio(num_comandos_date);
+        	if (indice == 1) {
+        	    meses_barras(num_comandos_date, MAX_COMANDOS, comandos_date);
+        	    dias_mas_comandos(num_comandos_date_suma, num_comandos_date * 2, comandos_date_suma);
+        	}
+        	if (indice == 2) comandos_mas_usados(num_suma_principales, MAX_COMANDOS_REPETICION, suma_comandos_principales_ordenados);
+        	if (indice == 3) combinacion_comandos_mas_usados(num_repetidos, comandos_ordenados);
+        	if (indice == 4) resumen(num_comandos_date, num_suma_principales, MAX_COMANDOS_REPETICION, suma_comandos_principales_ordenados, num_repetidos, comandos_ordenados);
+
+        	printf("\n\nPresiona 's' para avanzar, 'a' para retroceder, 'q' para salir...\n");
+
+        	key = getchar();
+        	while (getchar() != '\n'); // Limpiar buffer
+
+        	if (key == 'q') break;
+        	if (key == 's' && indice < 4) indice++;
+        	if (key == 'a' && indice > 0) indice--;
+    	}
+
 
 	/* PRUEBAS DE SALIDA */
 
