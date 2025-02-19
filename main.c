@@ -462,67 +462,89 @@ void comandos_mas_usados(const int num_suma_principales, const int MAX_COMANDOS_
 
 	getchar();
 	
-	printf("\nComando Numero 1: ");
 	for (int i=0; i<3; i++)
 	{
-		printf(".");
+		printf("..");
 		fflush(stdout);
 		sleep(1);
 	}
+
+	printf("\nComando Numero 1: ");
 	printf("\n");
 	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-2]);
 	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-1]);
 	
 	sleep(1);
 	printf("\nComando Numero 2: ");
-	for (int i=0; i<3; i++)
-	{
-		printf(".");
-		fflush(stdout);
-		sleep(1);
-	}
 	printf("\n");
 	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-4]);
 	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-3]);
 
 	sleep(1);
 	printf("\nComando Numero 3: ");
-	for (int i=0; i<3; i++)
-	{
-		printf(".");
-		fflush(stdout);
-		sleep(1);
-	}
 	printf("\n");
 	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-6]);
 	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-5]);
 	
 	sleep(1);
 	printf("\nComando Numero 4: ");
-	for (int i=0; i<3; i++)
-	{
-		printf(".");
-		fflush(stdout);
-		sleep(1);
-	}
 	printf("\n");
 	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-8]);
 	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-7]);
 
 	sleep(1);
 	printf("\nComando Numero 5: ");
-	for (int i=0; i<3; i++)
-	{
-		printf(".");
-		fflush(stdout);
-		sleep(1);
-	}
 	printf("\n");
 	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-10]);
 	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-9]);
 	
 }
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void combinacion_comandos_mas_usados(const int num_repetidos, char comandos_ordenados[num_repetidos][MAX_LONGITUD])
+{
+	printf("COMBINACION DE COMANDOS MAS USADOS\n");
+	printf("Enter para descubrir...\n");
+
+	getchar();
+	
+	for (int i=0; i<3; i++)
+	{
+		printf("..");
+		fflush(stdout);
+		sleep(1);
+	}
+
+	printf("\nComando Numero 1: ");
+	printf("\n");
+	printf(" %s\n",comandos_ordenados[num_repetidos-2]);
+	printf(" [usado %s veces]\n",comandos_ordenados[num_repetidos-1]);
+	
+	sleep(1);
+	printf("\nComando Numero 2: ");
+	printf("\n");
+	printf(" %s\n",comandos_ordenados[num_repetidos-4]);
+	printf(" [usado %s veces]\n",comandos_ordenados[num_repetidos-3]);
+
+	sleep(1);
+	printf("\nComando Numero 3: ");
+	printf("\n");
+	printf(" %s\n",comandos_ordenados[num_repetidos-6]);
+	printf(" [usado %s veces]\n",comandos_ordenados[num_repetidos-5]);
+	
+	sleep(1);
+	printf("\nComando Numero 4: ");
+	printf("\n");
+	printf(" %s\n",comandos_ordenados[num_repetidos-8]);
+	printf(" [usado %s veces]\n",comandos_ordenados[num_repetidos-7]);
+	
+	sleep(1);
+	printf("\nComando Numero 5: ");
+	printf("\n");
+	printf(" %s\n",comandos_ordenados[num_repetidos-10]);
+	printf(" [usado %s veces]\n",comandos_ordenados[num_repetidos-9]);
+
+}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 int main()
@@ -609,6 +631,7 @@ int main()
 	meses_barras(num_comandos_date, MAX_COMANDOS, comandos_date);
 	dias_mas_comandos(num_comandos_date_suma, num_comandos_date*2, comandos_date_suma);
 	comandos_mas_usados(num_suma_principales, MAX_COMANDOS_REPETICION, suma_comandos_principales_ordenados);
+	combinacion_comandos_mas_usados(num_repetidos, comandos_ordenados);
 
 	/* PRUEBAS DE SALIDA */
 
