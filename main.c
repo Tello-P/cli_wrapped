@@ -448,11 +448,11 @@ void dias_mas_comandos(const int num_comandos, const int MAX_COMANDOS, char fech
 	*/
 	
 	printf("\nDias con mas comandos\n");
-	printf("Numero 1: %s\n", fechas_comandos[num_comandos-2]);
-	printf("Numero 2: %s\n", fechas_comandos[num_comandos-4]);
-	printf("Numero 3: %s\n", fechas_comandos[num_comandos-6]);
-	printf("Numero 4: %s\n", fechas_comandos[num_comandos-8]);
-	printf("Numero 5: %s\n", fechas_comandos[num_comandos-10]);
+	printf("Numero 1: %s | %s veces\n", fechas_comandos[num_comandos-2],fechas_comandos[num_comandos-1]);
+	printf("Numero 2: %s | %s veces\n", fechas_comandos[num_comandos-4],fechas_comandos[num_comandos-3]);
+	printf("Numero 3: %s | %s veces\n", fechas_comandos[num_comandos-6],fechas_comandos[num_comandos-5]);
+	printf("Numero 4: %s | %s veces\n", fechas_comandos[num_comandos-8],fechas_comandos[num_comandos-7]);
+	printf("Numero 5: %s | %s veces\n", fechas_comandos[num_comandos-10],fechas_comandos[num_comandos-9]);
 
 }
 
