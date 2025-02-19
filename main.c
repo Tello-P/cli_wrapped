@@ -362,8 +362,58 @@ void titulo_inicio(const int num_comandos)
         printf(" | |___| |___ | |    \\ V  V / |  _ <  / ___ \\|  __/|  __/| |___| |_| |%d\n",num_comandos);
 	printf("%d",num_comandos);
         printf("  \\____|_____|___|    \\_/\\_/  |_| \\_\\/_/   \\_\\_|   |_|   |_____|____/ %d\n", num_comandos);
-	printf("%d\n",num_comandos);
+	printf("%d                                                                      %d\n\n", num_comandos, num_comandos);
+}
 
+void titulo_meses_barras()
+{
+	printf("  _____ ___ __  __ _____      _     ___ _   _ _____ \n");
+	printf(" |_   _|_ _|  \\/  | ____|    | |   |_ _| \\ | | ____|\n");
+    	printf("   | |  | || |\\/| |  _|      | |    | ||  \\| |  _|  \n");
+    	printf("   | |  | || |  | | |___     | |___ | || |\\  | |___ \n");
+    	printf("   |_| |___|_|  |_|_____|    |_____|___|_| \\_|_____|\n");
+    	printf("                                                  \n\n");
+}
+
+void titulo_comandos_mas_usados()
+{
+	printf("  __  __    _    ____     _   _ ____    _    ____   ___   ____  \n");
+    	printf(" |  \\/  |  / \\  / ___|   | | | / ___|  / \\  |  _ \\ / _ \\ / ___| \n");
+    	printf(" | |\\/| | / _ \\ \\___ \\   | | | \\___ \\ / _ \\ | | | | | | \\___ \\ \n");
+    	printf(" | |  | |/ ___ \\ ___) |  | |_| |___) / ___ \\| |_| | |_| |___) |\n");
+    	printf(" |_|  |_/_/   \\_\\____/   \\____/|____/_/   \\_\\____/ \\___/|____/ \n");
+	printf("                                                                \n\n");
+}
+
+void titulo_combinacion_comandos_mas_usados()
+{
+	printf("   ____ ___  __  __ ____ ___ _   _    _    ____ ___ ___  _   _ _____ ____  \n");
+    	printf("  / ___/ _ \\|  \\/  | __ )_ _| \\ | |  / \\  / ___|_ _/ _ \\| \\ | | ____/ ___| \n");
+    	printf(" | |  | | | | |\\/| |  _ \\| ||  \\| | / _ \\| |    | | | | |  \\| |  _| \\___ \\ \n");
+    	printf(" | |__| |_| | |  | | |_) | || |\\  |/ ___ \\ |___ | | |_| | |\\  | |___ ___) |\n");
+    	printf("  \\____\\___/|_|  |_|____/___|_| \\_/_/   \\_\\____|___\\___/|_| \\_|_____|____/ \n");
+    	printf("                                                                            \n\n");
+}
+
+
+void titulo_top_3_comandos()
+{
+	printf("  _____             _____                                       _           \n");
+    	printf(" |_   _|__  _ __   |___ /    ___ ___  _ __ ___   __ _ _ __   __| | ___  ___ \n");
+    	printf("   | |/ _ \\| '_ \\    |_ \\   / __/ _ \\| '_ ` _ \\ / _` | '_ \\ / _` |/ _ \\ __|\n");
+    	printf("   | | (_) | |_) |  ___) | | (_| (_) | | | | | | (_| | | | | (_| | (_) \\__ \\\n");
+    	printf("   |_|\\___/| .__/  |____/   \\___\\___/|_| |_| |_|\\__,_|_| |_|\\__,_|\\___/|___/\n");
+    	printf("           |_|                                                               \n\n");
+}
+
+void titulo_top_3_combinaciones()
+{
+	printf("  _____             _____                       _               \n");
+    	printf(" |_   _|__  _ __   |___ /    ___ ___  _ __ ___ | |__   ___  ___ \n");
+    	printf("   | |/ _ \\| '_ \\    |_ \\   / __/ _ \\| '_ ` _ \\| '_ \\ / _ \\ __|\n");
+    	printf("   | | (_) | |_) |  ___) | | (_| (_) | | | | | | |_) | (_) \\__ \\\n");
+    	printf("   |_|\\___/| .__/  |____/   \\___\\___/|_| |_| |_|_.__/ \\___/|___/\n");
+    	printf("           |_|                                                   \n\n");
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -372,6 +422,7 @@ void meses_barras(const int num_comandos,const int MAX_COMANDOS, char fechas_com
 	
 	//system("clear");
         printf("\033[H\033[J"); // Limpia la pantalla en terminal
+	titulo_meses_barras();
 	int enero=0, febrero=0, marzo=0, abril=0, mayo=0, junio=0, julio=0, agosto=0, septiembre=0, octubre=0, noviembre=0, diciembre=0;
 	int enero2=0, febrero2=0, marzo2=0, abril2=0, mayo2=0, junio2=0, julio2=0, agosto2=0, septiembre2=0, octubre2=0, noviembre2=0, diciembre2=0;
 
@@ -465,19 +516,19 @@ void comandos_mas_usados(const int num_suma_principales, const int MAX_COMANDOS_
 {
 	//system("clear");
         printf("\033[H\033[J"); // Limpia la pantalla en terminal
-	printf("COMANDOS MAS USADOS\n");
-	printf("Enter para descubrir...\n");
+	titulo_comandos_mas_usados();
+	printf("\n\nEnter para descubrir...\n");
 
 	getchar();
 	
 	for (int i=0; i<5; i++)
 	{
-		printf("...");
+		printf("=============");
 		fflush(stdout);
 		sleep(1);
 	}
 
-	printf("\nComando Numero 1: ");
+	printf("\n\nComando Numero 1: ");
 	printf("\n");
 	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-2]);
 	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-1]);
@@ -513,19 +564,19 @@ void combinacion_comandos_mas_usados(const int num_repetidos, char comandos_orde
 {
 	//system("clear");
         printf("\033[H\033[J"); // Limpia la pantalla en terminal
-	printf("COMBINACION DE COMANDOS MAS USADOS\n");
-	printf("Enter para descubrir...\n");
+	titulo_combinacion_comandos_mas_usados();
+	printf("\n\nEnter para descubrir...\n");
 
 	getchar();
 	
-	for (int i=0; i<5; i++)
+	for (int i=0; i<6; i++)
 	{
-		printf("...");
+		printf("============");
 		fflush(stdout);
 		sleep(1);
 	}
 
-	printf("\nComando Numero 1: ");
+	printf("\n\nComando Numero 1: ");
 	printf("\n");
 	printf(" %s\n",comandos_ordenados[num_repetidos-2]);
 	printf(" [usado %s veces]\n",comandos_ordenados[num_repetidos-1]);
@@ -562,40 +613,35 @@ void resumen(const int num_comandos_date, const int num_suma_principales, const 
 {
 	//system("clear");
         printf("\033[H\033[J"); // Limpia la pantalla en terminal
-	printf("\nNUMERO TOTAL DE COMANDOS USADOS\n %d\n",num_comandos_date);
-	
-	
-	printf("\nTOP 3 COMANDOS MAS USADOS\n");
-	
-	printf("\nComando Numero 1:\n");
-	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-2]);
-	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-1]);
-	
-	printf("\nComando Numero 2:\n");
-	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-4]);
-	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-3]);;
-	
-	printf("\nComando Numero 3:\n");
-	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-6]);
-	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-5]);
-	
 
-	printf("\nTOP 3 COMBINACIONES MAS USADAS\n");
+	titulo_inicio(num_comandos_date);
 
-	printf("\nComando Numero 1: ");
-	printf("\n");
-	printf(" %s\n",comandos_ordenados[num_repetidos-2]);
+	printf("\n\n");
+	titulo_top_3_comandos();
+	
+	printf("\n %s [usado %s veces]  \n", 
+        suma_comandos_principales_ordenados[num_suma_principales - 2], 
+        suma_comandos_principales_ordenados[num_suma_principales - 1]);
+
+	printf(" %s [usado %s veces]  \n", 
+        suma_comandos_principales_ordenados[num_suma_principales - 4], 
+        suma_comandos_principales_ordenados[num_suma_principales - 3]);
+
+	printf(" %s [usado %s veces]\n\n", 
+        suma_comandos_principales_ordenados[num_suma_principales - 6], 
+        suma_comandos_principales_ordenados[num_suma_principales - 5]);
+
+
+	titulo_top_3_combinaciones();
+
+	printf("\n %s",comandos_ordenados[num_repetidos-2]);
 	printf(" [usado %s veces]\n",comandos_ordenados[num_repetidos-1]);
 	
-	printf("\nComando Numero 2: ");
-	printf("\n");
-	printf(" %s\n",comandos_ordenados[num_repetidos-4]);
+	printf(" %s",comandos_ordenados[num_repetidos-4]);
 	printf(" [usado %s veces]\n",comandos_ordenados[num_repetidos-3]);
 
-	printf("\nComando Numero 3: ");
-	printf("\n");
-	printf(" %s\n",comandos_ordenados[num_repetidos-6]);
-	printf(" [usado %s veces]\n",comandos_ordenados[num_repetidos-5]);
+	printf(" %s",comandos_ordenados[num_repetidos-6]);
+	printf(" [usado %s veces]\n\n",comandos_ordenados[num_repetidos-5]);
 	
 
 
