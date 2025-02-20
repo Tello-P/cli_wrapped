@@ -483,7 +483,7 @@ void meses_barras(const int num_comandos,const int MAX_COMANDOS, char fechas_com
 	#define PRINT_MES(nombre, valor, valor2) \
         printf("\n" nombre " "); \
         for (int i = 0; i < (valor * max_hashes) / max_value; i++) { \
-	   printf(CYAN"#"RESET); \
+	   printf(CYAN"█"RESET); \
         }\
 	printf(YELLOW" [%d]"RESET,valor2);
 
