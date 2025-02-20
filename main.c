@@ -634,17 +634,16 @@ void resumen(const int num_comandos_date, const int num_suma_principales, const 
 
 	titulo_top_3_comandos();
 	
-	printf("\n "CYAN"%s"RESET" [usado "YELLOW"%s"RESET" veces]  \n", 
-        suma_comandos_principales_ordenados[num_suma_principales - 2], 
-        suma_comandos_principales_ordenados[num_suma_principales - 1]);
-
-	printf(" "CYAN"%s"RESET" [usado "YELLOW"%s"RESET" veces]  \n", 
-        suma_comandos_principales_ordenados[num_suma_principales - 4], 
-        suma_comandos_principales_ordenados[num_suma_principales - 3]);
-
-	printf(" "CYAN"%s"RESET" [usado "YELLOW"%s"RESET" veces]  \n", 
-        suma_comandos_principales_ordenados[num_suma_principales - 6], 
-        suma_comandos_principales_ordenados[num_suma_principales - 5]);
+  	printf("       ┌──────────────────────────────────────┐         \n");
+    	printf("       │                Nº1                   │  "CYAN"%s"RESET" [usado "YELLOW"%s"RESET" veces]  \n",suma_comandos_principales_ordenados[num_suma_principales - 2], suma_comandos_principales_ordenados[num_suma_principales - 1]);
+    	printf("       └──────────────────────────────────────┘		\n");
+    	printf("       ┌─────────────────────────────┐            	\n");
+    	printf("       │             Nº2             │   "CYAN"%s"RESET" [usado "YELLOW"%s"RESET" veces]  \n", suma_comandos_principales_ordenados[num_suma_principales - 4], suma_comandos_principales_ordenados[num_suma_principales - 3]);
+    	printf("       └─────────────────────────────┘			\n");
+	printf("       ┌─────────────────────┐             		\n");
+    	printf("       │         Nº3         │    "CYAN"%s"RESET" [usado "YELLOW"%s"RESET" veces]  \n", suma_comandos_principales_ordenados[num_suma_principales - 6], suma_comandos_principales_ordenados[num_suma_principales - 5]);
+    	printf("       └─────────────────────┘				\n");
+	
 
 
 	titulo_top_3_combinaciones();
@@ -755,7 +754,7 @@ int main()
 	resumen(num_comandos_date, num_suma_principales, MAX_COMANDOS_REPETICION, suma_comandos_principales_ordenados, num_repetidos, comandos_ordenados);
 	*/
 
-    	int indice = 0;
+    	int indice = 4;
     	int key;
 	while (1)
 	{
