@@ -648,16 +648,18 @@ void resumen(const int num_comandos_date, const int num_suma_principales, const 
 
 	titulo_top_3_combinaciones();
 
-	printf(CYAN"\n %s"RESET,comandos_ordenados[num_repetidos-2]);
-	printf(" [usado "YELLOW"%s"RESET" veces]\n",comandos_ordenados[num_repetidos-1]);
-	
-	printf(CYAN" %s"RESET,comandos_ordenados[num_repetidos-4]);
-	printf(" [usado "YELLOW"%s"RESET" veces]\n",comandos_ordenados[num_repetidos-3]);
+	printf("       ┌──────────────────────────────────────┐         \n");
+    	printf("       │                Nº1                   │  "CYAN"%s"RESET" [usado "YELLOW"%s"RESET" veces]  \n",comandos_ordenados[num_repetidos-2], comandos_ordenados[num_repetidos-1]);
 
-	printf(CYAN" %s"RESET,comandos_ordenados[num_repetidos-6]);
-	printf(" [usado "YELLOW"%s"RESET" veces]\n",comandos_ordenados[num_repetidos-5]);
+	printf("       └──────────────────────────────────────┘		\n");
+    	printf("       ┌─────────────────────────────┐            	\n");
+    	printf("       │             Nº2             │   "CYAN"%s"RESET" [usado "YELLOW"%s"RESET" veces]  \n", comandos_ordenados[num_repetidos - 4], comandos_ordenados[num_repetidos - 3]);
+    	printf("       └─────────────────────────────┘			\n");
+	printf("       ┌─────────────────────┐             		\n");
+    	printf("       │         Nº3         │    "CYAN"%s"RESET" [usado "YELLOW"%s"RESET" veces]  \n", comandos_ordenados[num_repetidos - 6], comandos_ordenados[num_repetidos - 5]);
+    	printf("       └─────────────────────┘				\n");
 	
-      	printf("\n──────────────────────────────────────────────────────────────────────────────\n");
+      	printf("\n──────────────────────────────────────────────────────────────────────────────");
 
 
 
@@ -754,11 +756,11 @@ int main()
 	resumen(num_comandos_date, num_suma_principales, MAX_COMANDOS_REPETICION, suma_comandos_principales_ordenados, num_repetidos, comandos_ordenados);
 	*/
 
-    	int indice = 4;
+    	int indice = 0;
     	int key;
 	while (1)
 	{
-        	//printf("\033[H\033[J"); // Limpia la pantalla en terminal
+        	printf("\033[H\033[J"); // Limpia la pantalla en terminal
 	
         	// Llamar a la función según el índice
         	if (indice == 0) titulo_inicio(num_comandos_date);
@@ -775,19 +777,16 @@ int main()
         	key = getchar();
         	while (getchar() != '\n'); // Limpiar buffer
 
-        	if (key == 'q') break;
+        	if (key == 'q') 
+		{
+			
+        		printf("\033[H\033[J"); // Limpia la pantalla en terminal
+			break;
+		}
         	if (key == 's' && indice < 4) indice++;
         	if (key == 'a' && indice > 0) indice--;
     	}
 
-
-	/* PRUEBAS DE SALIDA */
-
-/*	for (int i = 0; i < num_suma_principales; i++) 
-	{
-        	printf("%s\n", suma_comandos_principales_ordenados[i]);
-    	}
-*/
 
 	return 0;
 }
