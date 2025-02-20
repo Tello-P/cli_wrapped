@@ -3,6 +3,14 @@
 #include <string.h>
 #include <unistd.h>
 
+#define RED     "\x1b[31m"
+#define GREEN   "\x1b[32m"
+#define YELLOW  "\x1b[33m"
+#define BLUE    "\x1b[34m"
+#define MAGENTA "\x1b[35m"
+#define CYAN    "\x1b[36m"
+#define RESET   "\x1b[0m"
+
 #define HISTORY_FILE "/home/tello/.zsh_history"
 #define HISTORY_FILE_DATE "/home/tello/.zsh_history_date"
 #define MAX_LONGITUD 500 
@@ -352,7 +360,7 @@ void titulo_inicio(const int num_comandos)
 		exit(1);
 	}
 
-	printf("%d",num_comandos);
+	printf(BLUE"%d",num_comandos);
 	printf("   ____ _     ___  __        ______      _    ____  ____  _____ ____  %d\n",num_comandos);
 	printf("%d",num_comandos);
 	printf("  / ___| |   |_ _| \\ \\      / /  _ \\    / \\  |  _ \\|  _ \\| ____|  _ \\ %d\n",num_comandos);
@@ -362,42 +370,43 @@ void titulo_inicio(const int num_comandos)
         printf(" | |___| |___ | |    \\ V  V / |  _ <  / ___ \\|  __/|  __/| |___| |_| |%d\n",num_comandos);
 	printf("%d",num_comandos);
         printf("  \\____|_____|___|    \\_/\\_/  |_| \\_\\/_/   \\_\\_|   |_|   |_____|____/ %d\n", num_comandos);
-	printf("%d                                                                      %d\n\n", num_comandos, num_comandos);
+	printf("%d                                                                      %d\n\n" RESET, num_comandos, num_comandos);
 }
 
 void titulo_meses_barras()
 {
-	printf("  _____ ___ __  __ _____      _     ___ _   _ _____ \n");
+	printf(BLUE "  _____ ___ __  __ _____      _     ___ _   _ _____ \n");
 	printf(" |_   _|_ _|  \\/  | ____|    | |   |_ _| \\ | | ____|\n");
     	printf("   | |  | || |\\/| |  _|      | |    | ||  \\| |  _|  \n");
     	printf("   | |  | || |  | | |___     | |___ | || |\\  | |___ \n");
     	printf("   |_| |___|_|  |_|_____|    |_____|___|_| \\_|_____|\n");
-    	printf("                                                  \n\n");
+    	printf("                                                  \n\n" RESET);
 }
 
 void titulo_comandos_mas_usados()
 {
-	printf("  __  __    _    ____     _   _ ____    _    ____   ___   ____  \n");
+	printf(BLUE "  __  __    _    ____     _   _ ____    _    ____   ___   ____  \n");
     	printf(" |  \\/  |  / \\  / ___|   | | | / ___|  / \\  |  _ \\ / _ \\ / ___| \n");
     	printf(" | |\\/| | / _ \\ \\___ \\   | | | \\___ \\ / _ \\ | | | | | | \\___ \\ \n");
     	printf(" | |  | |/ ___ \\ ___) |  | |_| |___) / ___ \\| |_| | |_| |___) |\n");
     	printf(" |_|  |_/_/   \\_\\____/   \\____/|____/_/   \\_\\____/ \\___/|____/ \n");
-	printf("                                                                \n\n");
+	printf("                                                                \n\n" RESET);
 }
 
 void titulo_combinacion_comandos_mas_usados()
 {
-	printf("   ____ ___  __  __ ____ ___ _   _    _    ____ ___ ___  _   _ _____ ____  \n");
+	printf(BLUE "   ____ ___  __  __ ____ ___ _   _    _    ____ ___ ___  _   _ _____ ____  \n");
     	printf("  / ___/ _ \\|  \\/  | __ )_ _| \\ | |  / \\  / ___|_ _/ _ \\| \\ | | ____/ ___| \n");
     	printf(" | |  | | | | |\\/| |  _ \\| ||  \\| | / _ \\| |    | | | | |  \\| |  _| \\___ \\ \n");
     	printf(" | |__| |_| | |  | | |_) | || |\\  |/ ___ \\ |___ | | |_| | |\\  | |___ ___) |\n");
     	printf("  \\____\\___/|_|  |_|____/___|_| \\_/_/   \\_\\____|___\\___/|_| \\_|_____|____/ \n");
-    	printf("                                                                            \n\n");
+    	printf("                                                                            \n\n" RESET);
 }
 
 
 void titulo_top_3_comandos()
 {
+	printf("------------------------------------------------------------------------------\n");
 	printf("  _____             _____                                       _           \n");
     	printf(" |_   _|__  _ __   |___ /    ___ ___  _ __ ___   __ _ _ __   __| | ___  ___ \n");
     	printf("   | |/ _ \\| '_ \\    |_ \\   / __/ _ \\| '_ ` _ \\ / _` | '_ \\ / _` |/ _ \\ __|\n");
@@ -408,6 +417,7 @@ void titulo_top_3_comandos()
 
 void titulo_top_3_combinaciones()
 {
+	printf("------------------------------------------------------------------------------\n");
 	printf("  _____             _____                       _               \n");
     	printf(" |_   _|__  _ __   |___ /    ___ ___  _ __ ___ | |__   ___  ___ \n");
     	printf("   | |/ _ \\| '_ \\    |_ \\   / __/ _ \\| '_ ` _ \\| '_ \\ / _ \\ __|\n");
@@ -473,9 +483,9 @@ void meses_barras(const int num_comandos,const int MAX_COMANDOS, char fechas_com
 	#define PRINT_MES(nombre, valor, valor2) \
         printf("\n" nombre " "); \
         for (int i = 0; i < (valor * max_hashes) / max_value; i++) { \
-	   printf("#"); \
+	   printf(CYAN"#"RESET); \
         }\
-	printf(" [%d]",valor2);
+	printf(YELLOW" [%d]"RESET,valor2);
 
     	// Imprimir los meses con los '#' escalados
     	PRINT_MES("Enero", enero, enero2);
@@ -500,13 +510,19 @@ void dias_mas_comandos(const int num_comandos, const int MAX_COMANDOS, char fech
 	* que es el mas alto y 
 	* listo
 	*/
-	
-	printf("\nDias con mas comandos\n");
-	printf("Numero 1: %s | %s veces\n", fechas_comandos[num_comandos-2],fechas_comandos[num_comandos-1]);
-	printf("Numero 2: %s | %s veces\n", fechas_comandos[num_comandos-4],fechas_comandos[num_comandos-3]);
-	printf("Numero 3: %s | %s veces\n", fechas_comandos[num_comandos-6],fechas_comandos[num_comandos-5]);
-	printf("Numero 4: %s | %s veces\n", fechas_comandos[num_comandos-8],fechas_comandos[num_comandos-7]);
-	printf("Numero 5: %s | %s veces\n", fechas_comandos[num_comandos-10],fechas_comandos[num_comandos-9]);
+
+    printf(BLUE"\n┌────────────────────────────────────┐\n");
+    	printf("│                                    │\n"RESET);
+    printf(BLUE"│"RESET);
+    	printf("       Dias con mas comandos        ");
+    					 printf(BLUE"│\n"RESET);
+    	printf(BLUE"│       		             │\n");	
+	printf("└────────────────────────────────────┘\n\n"RESET);
+	printf("Nº 1:"CYAN" %s "RESET"|"YELLOW" %s "RESET"veces\n", fechas_comandos[num_comandos-2],fechas_comandos[num_comandos-1]);
+	printf("Nº 2:"CYAN" %s "RESET"|"YELLOW" %s "RESET"veces\n", fechas_comandos[num_comandos-4],fechas_comandos[num_comandos-3]);
+	printf("Nº 3:"CYAN" %s "RESET"|"YELLOW" %s "RESET"veces\n", fechas_comandos[num_comandos-6],fechas_comandos[num_comandos-5]);
+	printf("Nº 4:"CYAN" %s "RESET"|"YELLOW" %s "RESET"veces\n", fechas_comandos[num_comandos-8],fechas_comandos[num_comandos-7]);
+	printf("Nº 5:"CYAN" %s "RESET"|"YELLOW" %s "RESET"veces\n", fechas_comandos[num_comandos-10],fechas_comandos[num_comandos-9]);
 
 }
 
