@@ -406,24 +406,24 @@ void titulo_combinacion_comandos_mas_usados()
 
 void titulo_top_3_comandos()
 {
-	printf("------------------------------------------------------------------------------\n");
-	printf("  _____             _____                                       _           \n");
+      	printf("──────────────────────────────────────────────────────────────────────────────\n");
+	printf(BLUE"  _____             _____                                       _           \n");
     	printf(" |_   _|__  _ __   |___ /    ___ ___  _ __ ___   __ _ _ __   __| | ___  ___ \n");
     	printf("   | |/ _ \\| '_ \\    |_ \\   / __/ _ \\| '_ ` _ \\ / _` | '_ \\ / _` |/ _ \\ __|\n");
     	printf("   | | (_) | |_) |  ___) | | (_| (_) | | | | | | (_| | | | | (_| | (_) \\__ \\\n");
     	printf("   |_|\\___/| .__/  |____/   \\___\\___/|_| |_| |_|\\__,_|_| |_|\\__,_|\\___/|___/\n");
-    	printf("           |_|                                                               \n\n");
+    	printf("           |_|                                                               \n\n"RESET);
 }
 
 void titulo_top_3_combinaciones()
 {
-	printf("------------------------------------------------------------------------------\n");
-	printf("  _____             _____                       _               \n");
+      	printf("\n──────────────────────────────────────────────────────────────────────────────\n");
+	printf(BLUE"  _____             _____                       _               \n");
     	printf(" |_   _|__  _ __   |___ /    ___ ___  _ __ ___ | |__   ___  ___ \n");
     	printf("   | |/ _ \\| '_ \\    |_ \\   / __/ _ \\| '_ ` _ \\| '_ \\ / _ \\ __|\n");
     	printf("   | | (_) | |_) |  ___) | | (_| (_) | | | | | | |_) | (_) \\__ \\\n");
     	printf("   |_|\\___/| .__/  |____/   \\___\\___/|_| |_| |_|_.__/ \\___/|___/\n");
-    	printf("           |_|                                                   \n\n");
+    	printf("           |_|                                                   \n\n"RESET);
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -533,45 +533,45 @@ void comandos_mas_usados(const int num_suma_principales, const int MAX_COMANDOS_
 	//system("clear");
         printf("\033[H\033[J"); // Limpia la pantalla en terminal
 	titulo_comandos_mas_usados();
-	printf("\n\nEnter para descubrir...\n");
+	printf(RED"\n\nEnter"RESET" para descubrir...\n");
 
 	getchar();
 	
 	for (int i=0; i<5; i++)
 	{
-		printf("=============");
+      	      	printf(BLUE"─────────────"RESET);
 		fflush(stdout);
 		sleep(1);
 	}
 
-	printf("\n\nComando Numero 1: ");
-	printf("\n");
-	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-2]);
-	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-1]);
+	printf("\n\nComando Nº 1: ");
+      printf("\n─────────────\n");
+	printf(CYAN" %s\n"RESET,suma_comandos_principales_ordenados[num_suma_principales-2]);
+	printf(" [usado"YELLOW" %s"RESET" veces]\n",suma_comandos_principales_ordenados[num_suma_principales-1]);
 	
 	sleep(2);
-	printf("\nComando Numero 2: ");
-	printf("\n");
-	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-4]);
-	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-3]);
+	printf("\nComando Nº 2: ");
+      printf("\n─────────────\n");
+	printf(CYAN" %s\n"RESET,suma_comandos_principales_ordenados[num_suma_principales-4]);
+	printf(" [usado "YELLOW"%s "RESET"veces]\n",suma_comandos_principales_ordenados[num_suma_principales-3]);
 
 	sleep(2);
-	printf("\nComando Numero 3: ");
-	printf("\n");
-	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-6]);
-	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-5]);
+	printf("\nComando Nº 3: ");
+      printf("\n─────────────\n");
+	printf(CYAN" %s\n"RESET,suma_comandos_principales_ordenados[num_suma_principales-6]);
+	printf(" [usado"YELLOW" %s"RESET" veces]\n",suma_comandos_principales_ordenados[num_suma_principales-5]);
 	
 	sleep(2);
-	printf("\nComando Numero 4: ");
-	printf("\n");
-	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-8]);
-	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-7]);
+	printf("\nComando Nº 4: ");
+      printf("\n─────────────\n");
+	printf(CYAN" %s\n"RESET,suma_comandos_principales_ordenados[num_suma_principales-8]);
+	printf(" [usado"YELLOW" %s"RESET" veces]\n",suma_comandos_principales_ordenados[num_suma_principales-7]);
 
 	sleep(2);
-	printf("\nComando Numero 5: ");
-	printf("\n");
-	printf(" %s\n",suma_comandos_principales_ordenados[num_suma_principales-10]);
-	printf(" [usado %s veces]\n",suma_comandos_principales_ordenados[num_suma_principales-9]);
+	printf("\nComando Nº 5: ");
+      printf("\n─────────────\n");
+	printf(CYAN" %s\n"RESET,suma_comandos_principales_ordenados[num_suma_principales-10]);
+	printf(" [usado"YELLOW" %s"RESET" veces]\n",suma_comandos_principales_ordenados[num_suma_principales-9]);
 	
 }
 
@@ -581,45 +581,45 @@ void combinacion_comandos_mas_usados(const int num_repetidos, char comandos_orde
 	//system("clear");
         printf("\033[H\033[J"); // Limpia la pantalla en terminal
 	titulo_combinacion_comandos_mas_usados();
-	printf("\n\nEnter para descubrir...\n");
+	printf(RED"\n\nEnter"RESET" para descubrir...\n");
 
 	getchar();
 	
 	for (int i=0; i<6; i++)
 	{
-		printf("============");
+      	      	printf(BLUE"─────────────"RESET);
 		fflush(stdout);
 		sleep(1);
 	}
 
 	printf("\n\nComando Numero 1: ");
-	printf("\n");
-	printf(" %s\n",comandos_ordenados[num_repetidos-2]);
-	printf(" [usado %s veces]\n",comandos_ordenados[num_repetidos-1]);
+      printf("\n─────────────\n");
+	printf(CYAN" %s\n"RESET,comandos_ordenados[num_repetidos-2]);
+	printf(" [usado "YELLOW"%s"RESET" veces]\n",comandos_ordenados[num_repetidos-1]);
 	
 	sleep(2);
 	printf("\nComando Numero 2: ");
-	printf("\n");
-	printf(" %s\n",comandos_ordenados[num_repetidos-4]);
-	printf(" [usado %s veces]\n",comandos_ordenados[num_repetidos-3]);
+      printf("\n─────────────\n");
+	printf(CYAN" %s\n"RESET,comandos_ordenados[num_repetidos-4]);
+	printf(" [usado "YELLOW"%s"RESET" veces]\n",comandos_ordenados[num_repetidos-3]);
 
 	sleep(2);
 	printf("\nComando Numero 3: ");
-	printf("\n");
-	printf(" %s\n",comandos_ordenados[num_repetidos-6]);
-	printf(" [usado %s veces]\n",comandos_ordenados[num_repetidos-5]);
+      printf("\n─────────────\n");
+	printf(CYAN" %s\n"RESET,comandos_ordenados[num_repetidos-6]);
+	printf(" [usado "YELLOW"%s"RESET" veces]\n",comandos_ordenados[num_repetidos-5]);
 	
 	sleep(2);
 	printf("\nComando Numero 4: ");
-	printf("\n");
-	printf(" %s\n",comandos_ordenados[num_repetidos-8]);
-	printf(" [usado %s veces]\n",comandos_ordenados[num_repetidos-7]);
+      printf("\n─────────────\n");
+	printf(CYAN" %s\n"RESET,comandos_ordenados[num_repetidos-8]);
+	printf(" [usado "YELLOW"%s"RESET" veces]\n",comandos_ordenados[num_repetidos-7]);
 	
 	sleep(2);
 	printf("\nComando Numero 5: ");
-	printf("\n");
-	printf(" %s\n",comandos_ordenados[num_repetidos-10]);
-	printf(" [usado %s veces]\n",comandos_ordenados[num_repetidos-9]);
+      printf("\n─────────────\n");
+	printf(CYAN" %s\n"RESET,comandos_ordenados[num_repetidos-10]);
+	printf(" [usado "YELLOW"%s"RESET" veces]\n",comandos_ordenados[num_repetidos-9]);
 
 }
 
@@ -632,33 +632,33 @@ void resumen(const int num_comandos_date, const int num_suma_principales, const 
 
 	titulo_inicio(num_comandos_date);
 
-	printf("\n\n");
 	titulo_top_3_comandos();
 	
-	printf("\n %s [usado %s veces]  \n", 
+	printf("\n "CYAN"%s"RESET" [usado "YELLOW"%s"RESET" veces]  \n", 
         suma_comandos_principales_ordenados[num_suma_principales - 2], 
         suma_comandos_principales_ordenados[num_suma_principales - 1]);
 
-	printf(" %s [usado %s veces]  \n", 
+	printf(" "CYAN"%s"RESET" [usado "YELLOW"%s"RESET" veces]  \n", 
         suma_comandos_principales_ordenados[num_suma_principales - 4], 
         suma_comandos_principales_ordenados[num_suma_principales - 3]);
 
-	printf(" %s [usado %s veces]\n\n", 
+	printf(" "CYAN"%s"RESET" [usado "YELLOW"%s"RESET" veces]  \n", 
         suma_comandos_principales_ordenados[num_suma_principales - 6], 
         suma_comandos_principales_ordenados[num_suma_principales - 5]);
 
 
 	titulo_top_3_combinaciones();
 
-	printf("\n %s",comandos_ordenados[num_repetidos-2]);
-	printf(" [usado %s veces]\n",comandos_ordenados[num_repetidos-1]);
+	printf(CYAN"\n %s"RESET,comandos_ordenados[num_repetidos-2]);
+	printf(" [usado "YELLOW"%s"RESET" veces]\n",comandos_ordenados[num_repetidos-1]);
 	
-	printf(" %s",comandos_ordenados[num_repetidos-4]);
-	printf(" [usado %s veces]\n",comandos_ordenados[num_repetidos-3]);
+	printf(CYAN" %s"RESET,comandos_ordenados[num_repetidos-4]);
+	printf(" [usado "YELLOW"%s"RESET" veces]\n",comandos_ordenados[num_repetidos-3]);
 
-	printf(" %s",comandos_ordenados[num_repetidos-6]);
-	printf(" [usado %s veces]\n\n",comandos_ordenados[num_repetidos-5]);
+	printf(CYAN" %s"RESET,comandos_ordenados[num_repetidos-6]);
+	printf(" [usado "YELLOW"%s"RESET" veces]\n",comandos_ordenados[num_repetidos-5]);
 	
+      	printf("\n──────────────────────────────────────────────────────────────────────────────\n");
 
 
 
@@ -771,7 +771,7 @@ int main()
         	if (indice == 3) combinacion_comandos_mas_usados(num_repetidos, comandos_ordenados);
         	if (indice == 4) resumen(num_comandos_date, num_suma_principales, MAX_COMANDOS_REPETICION, suma_comandos_principales_ordenados, num_repetidos, comandos_ordenados);
 
-        	printf("\n\nPresiona 's' para avanzar, 'a' para retroceder, 'q' para salir...\n");
+        	printf("\n\nPresiona "RED"'s'"RESET" para avanzar, "RED"'a'"RESET" para retroceder, "RED"'q'"RESET" para salir...\n");
 
         	key = getchar();
         	while (getchar() != '\n'); // Limpiar buffer
