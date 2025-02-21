@@ -4,7 +4,6 @@
 #include <unistd.h>
 
 #define RED     "\x1b[31m"
-#define GREEN   "\x1b[32m"
 #define YELLOW  "\x1b[33m"
 #define BLUE    "\x1b[34m"
 #define MAGENTA "\x1b[35m"
@@ -373,6 +372,7 @@ void titulo_inicio(const int num_comandos)
 	printf("%d                                                                      %d\n\n" RESET, num_comandos, num_comandos);
 }
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void titulo_meses_barras()
 {
 	printf(BLUE "  _____ ___ __  __ _____      _     ___ _   _ _____ \n");
@@ -383,6 +383,7 @@ void titulo_meses_barras()
     	printf("                                                  \n\n" RESET);
 }
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void titulo_comandos_mas_usados()
 {
 	printf(BLUE "  __  __    _    ____     _   _ ____    _    ____   ___   ____  \n");
@@ -393,6 +394,7 @@ void titulo_comandos_mas_usados()
 	printf("                                                                \n\n" RESET);
 }
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void titulo_combinacion_comandos_mas_usados()
 {
 	printf(BLUE "   ____ ___  __  __ ____ ___ _   _    _    ____ ___ ___  _   _ _____ ____  \n");
@@ -404,6 +406,7 @@ void titulo_combinacion_comandos_mas_usados()
 }
 
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void titulo_top_3_comandos()
 {
       	printf("──────────────────────────────────────────────────────────────────────────────\n");
@@ -415,6 +418,7 @@ void titulo_top_3_comandos()
     	printf("           |_|                                                               \n\n"RESET);
 }
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void titulo_top_3_combinaciones()
 {
       	printf("\n──────────────────────────────────────────────────────────────────────────────\n");
@@ -694,7 +698,7 @@ int main()
 
 
 	/*
-	 * Para el hist_file
+	 * Comandos para el hist_file
 	 */
 
 	// Meter los comandos en char comandos
@@ -724,7 +728,7 @@ int main()
 	ordenar_cadena(MAX_COMANDOS_REPETICION, suma_comandos_principales, &num_suma_principales, suma_comandos_principales_ordenados);
 
 	/* 
-	 * Repetimos todo para el hist_file_date 
+	 * Comandos para el hist_file_date 
 	 */
 
 	// Aqui puede error por max_comandos pero si se limpian antes los dos archivos y hay el mismo numero no pasa nada
@@ -744,7 +748,7 @@ int main()
 	ordenar_cadena(len, comandos_date_suma, &len, comandos_date_suma_ordenados);
 
 	/*
-	 * Graficos
+	 * Comandos para los Graficos
 	 */
 
 	/*
@@ -755,6 +759,11 @@ int main()
 	combinacion_comandos_mas_usados(num_repetidos, comandos_ordenados);
 	resumen(num_comandos_date, num_suma_principales, MAX_COMANDOS_REPETICION, suma_comandos_principales_ordenados, num_repetidos, comandos_ordenados);
 	*/
+
+
+	/*
+	 * Menu incial
+	 */
 
     	int indice = 0;
     	int key;
